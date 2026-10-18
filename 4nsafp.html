@@ -54,10 +54,18 @@ a.go{display:block;line-height:49px;text-align:center;text-decoration:none}
 .lnk{display:block;margin-top:12px;font-size:14px;font-weight:600;color:var(--purple);text-decoration:none}
 @media (min-width:480px){nav{padding:0 32px}.card{padding:27px}.picker{padding:0 14px;gap:10px}.cup{font-size:34px}.amts{gap:8px}.amt{font-size:16px}}
 .go.app{margin-top:10px}
+.go.gp{display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#3c4043;border:1px solid #dadce0;margin-top:12px;font-weight:600;line-height:normal}
+.go.gp:hover{background:#f4f4f4}.go.gp svg{width:22px;height:22px}
+.oth{display:flex;align-items:center;justify-content:center;gap:10px;line-height:normal}
+.bds{display:inline-flex}.bds .bd+.bd{margin-left:-8px}
+.bd{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;font:700 9px Inter,sans-serif;color:#fff;border:2px solid var(--surface);flex:none}
+#opanel{margin-top:8px;display:grid;gap:8px}
+.row{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--lp-bd);border-radius:13px;text-decoration:none;color:var(--text);font-weight:600;font-size:14px;text-align:left}
+.row:hover{background:var(--lp-bg)}.row .bd{width:32px;height:32px;border-radius:9px;border:0;font-size:12px}
 </style>
 </head>
 <body>
-<nav><span class="logo">☕ 4nsafp<span>.</span></span><button type="button" class="tb" id="theme" aria-label="Switch to dark theme" title="Toggle black and white theme">☾</button></nav>
+<nav><span class="logo">☕ <span>4</span>4nsafp<span>.</span></span><button type="button" class="tb" id="theme" aria-label="Switch to dark theme" title="Toggle black and white theme">☾</button></nav>
 <main>
 <section class="card" aria-labelledby="ttl">
 <h1 id="ttl">Buy a coffee <span class="help"><button type="button" aria-label="About supporting">?</button><span class="tip" role="tooltip">Each coffee is ₹20. You pay by UPI.</span></span></h1>
@@ -74,19 +82,20 @@ a.go{display:block;line-height:49px;text-align:center;text-decoration:none}
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="box">
 <div id="s1"><div style="font-size:34px">☕</div><h2 id="mt">Pay ₹100</h2>
-<p class="pay">To <b>Mohammed Ansaf P</b><br><span>ansafm60@okicici</span><button type="button" class="mini" id="cpy">Copy</button></p>
+<p class="pay">To <b>Mohammed Ansaf P</b><br><span>ansafm60@okicici</span></p>
 <p class="pay" id="note"></p>
-<p>Choose your UPI app. The amount and your message are filled in for you.</p>
-<a class="go app" id="aG" href="#">Google Pay</a>
-<a class="go app" id="aP" href="#">PhonePe</a>
-<a class="go app" id="aT" href="#">Paytm</a>
-<a class="go alt" id="aU" href="#" style="line-height:47px">Other UPI app</a>
+<a class="go gp" id="aG" href="#"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google Pay</a>
+<button type="button" class="go alt oth" id="oth" aria-expanded="false" aria-controls="opanel"><span class="bds"><span class="bd" style="background:#5F259F">पे</span><span class="bd" style="background:#00BAF2">tm</span><span class="bd" style="background:#F37E20">UPI</span></span>Other UPI apps ▾</button>
+<div id="opanel" hidden>
+<a class="row" id="aP" href="#"><span class="bd" style="background:#5F259F">पे</span>PhonePe</a>
+<a class="row" id="aT" href="#"><span class="bd" style="background:#00BAF2">tm</span>Paytm</a>
+<a class="row" id="aU" href="#"><span class="bd" style="background:#F37E20">UPI</span>BHIM / any UPI app</a></div>
 <a class="lnk" id="calBtn" target="_blank" rel="noopener" href="#" hidden>🔔 Add weekly reminder to Google Calendar</a>
-<button type="button" class="go alt" id="paid">I’ve paid</button>
-<button type="button" class="mini" id="close" style="margin:12px 0 0">Cancel</button></div>
+<button type="button" class="mini" id="close" style="margin:14px 0 0">Cancel</button></div>
 <div id="s2" hidden><div style="font-size:40px">🎉</div><h2>Thank you!</h2><p id="mp"></p><button type="button" class="go" style="margin:0" id="done">Done</button></div>
 </div></div>
 
+<canvas id="cf" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60" aria-hidden="true"></canvas>
 <script>
 (function(){
 var P=20,UPI="ansafm60@okicici",PN="Mohammed Ansaf P",qty=5,cur=null,$=function(s){return document.querySelector(s)};
@@ -106,14 +115,30 @@ $("#go").addEventListener("click",function(){
  var a=qty*P;cur={n:$("#name").value.trim(),q:qty,mo:$("#rem").checked};
  $("#mt").textContent="Pay ₹"+a;var m=$("#msg").value.trim(),note=("x"+qty+" coffee"+(qty>1?"s":"")+(m?": "+m:"")).replace(/\s+/g," ").slice(0,50),L=links(a,note);$("#note").textContent="Note: "+note;$("#aG").href=L.g;$("#aP").href=L.p;$("#aT").href=L.t;$("#aU").href=L.u;
  var c=$("#calBtn");c.hidden=!cur.mo;if(cur.mo)c.href=calLink(a);
- $("#s1").hidden=false;$("#s2").hidden=true;$("#modal").classList.add("show");$("#aG").focus();
+ $("#s1").hidden=false;$("#s2").hidden=true;$("#modal").classList.add("show");$("#aG").focus();confetti(90);
 });
-$("#cpy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(UPI)}catch(e){}b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1500)});
-$("#paid").addEventListener("click",function(){
- $("#mp").textContent=(cur.n||"Friend")+", thank you for "+cur.q+" coffee"+(cur.q>1?"s":"")+" (₹"+cur.q*P+")."+(cur.mo?" Your weekly reminder is set.":"");
- $("#s1").hidden=true;$("#s2").hidden=false;$("#done").focus();
+var went=false;
+["aG","aP","aT","aU"].forEach(function(id){$("#"+id).addEventListener("click",function(){went=true})});
+$("#oth").addEventListener("click",function(){var p=$("#opanel");p.hidden=!p.hidden;this.setAttribute("aria-expanded",String(!p.hidden))});
+document.addEventListener("visibilitychange",function(){
+ if(!document.hidden&&went&&$("#modal").classList.contains("show")){went=false;
+  $("#mp").textContent=(cur.n||"Friend")+", thank you for "+cur.q+" coffee"+(cur.q>1?"s":"")+" (₹"+cur.q*P+"). If your payment went through, it means a lot!"+(cur.mo?" Your weekly reminder is set.":"");
+  $("#s1").hidden=true;$("#s2").hidden=false;$("#done").focus();confetti(160)}
 });
-function close(){$("#modal").classList.remove("show")}
+function confetti(n){
+ if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ var c=$("#cf"),x=c.getContext("2d"),W=c.width=innerWidth,H=c.height=innerHeight,ps=[],cols=["#BD59F7","#A63FE3","#E8CCFF","#FFB84D","#4CD4A0","#292929"];
+ for(var i=0;i<n;i++){var an=-Math.PI*(.15+Math.random()*.7),sp=9+Math.random()*11;
+  ps.push({x:W/2,y:H*.72,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,w:6+Math.random()*6,h:4+Math.random()*4,r:Math.random()*6,vr:(Math.random()-.5)*.4,c:cols[i%cols.length],t:i%9===0?2:(i%3===0?1:0)})}
+ var f=0;
+ (function tick(){x.clearRect(0,0,W,H);var live=0;
+  ps.forEach(function(p){p.vy+=.34;p.vx*=.992;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;if(p.y<H+20)live++;
+   x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;
+   if(p.t===2){x.font="18px serif";x.fillText("☕",-9,6)}else if(p.t===1){x.beginPath();x.arc(0,0,p.h,0,7);x.fill()}else x.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+   x.restore()});
+  if(live&&++f<260)requestAnimationFrame(tick);else x.clearRect(0,0,W,H)})();
+}
+function close(){went=false;$("#modal").classList.remove("show")}
 $("#close").addEventListener("click",close);$("#done").addEventListener("click",close);document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 var root=document.documentElement,tb=$("#theme");
 function paint(){var d=root.getAttribute("data-theme")==="dark";tb.textContent=d?"☀":"☾";tb.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme")}
