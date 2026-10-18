@@ -62,6 +62,43 @@ a.go{display:block;line-height:49px;text-align:center;text-decoration:none}
 #opanel{margin-top:8px;display:grid;gap:8px}
 .row{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--lp-bd);border-radius:13px;text-decoration:none;color:var(--text);font-weight:600;font-size:14px;text-align:left}
 .row:hover{background:var(--lp-bg)}.row .bd{width:32px;height:32px;border-radius:9px;border:0;font-size:12px}
+
+ /* Remove text selection highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Keep form fields selectable and editable */
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Remove tap highlight from clickable elements */
+button,
+a,
+.amt,
+.go,
+.tb,
+.media {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Remove default button focus outline after tapping */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+ 
 </style>
 </head>
 <body>
