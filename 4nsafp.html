@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Buy a coffee</title>
+<title>Buy me a coffee</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -105,7 +105,7 @@ a:focus:not(:focus-visible) {
 <nav><span class="logo">☕ <span>4</span>nsafp<span>.</span></span><button type="button" class="tb" id="theme" aria-label="Switch to dark theme" title="Toggle black and white theme">☾</button></nav>
 <main>
 <section class="card" aria-labelledby="ttl">
-<h1 id="ttl">Buy a coffee <span class="help"><button type="button" aria-label="About supporting">?</button><span class="tip" role="tooltip">Each coffee is ₹20. You pay by UPI.</span></span></h1>
+<h1 id="ttl">Buy me a coffee <span class="help"><button type="button" aria-label="About supporting">?</button><span class="tip" role="tooltip">Each coffee is ₹20. You pay by UPI.</span></span></h1>
 <div class="picker" role="group" aria-label="Number of coffees"><span class="cup" aria-hidden="true">☕</span><span class="x" aria-hidden="true">×</span>
 <div class="amts"><button type="button" class="amt" data-n="1" aria-pressed="false">1</button><button type="button" class="amt" data-n="2" aria-pressed="false">2</button><button type="button" class="amt" data-n="3" aria-pressed="false">3</button><button type="button" class="amt" data-n="4" aria-pressed="false">4</button><button type="button" class="amt" data-n="5" aria-pressed="true">5</button></div></div>
 <input class="f" id="name" type="text" placeholder="Name or @yoursocial" aria-label="Name or social handle" autocomplete="off">
@@ -147,7 +147,7 @@ function qs(a,t){return "pa="+encodeURIComponent(UPI)+"&pn="+encodeURIComponent(
 var IOS=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 function links(a,t){var q=qs(a,t);return{g:(IOS?"gpay://upi/pay?":"tez://upi/pay?")+q,p:"phonepe://pay?"+q,t:"paytmmp://pay?"+q,u:"upi://pay?"+q}}
 function calLink(a){var d=new Date();d.setDate(d.getDate()+7);d.setHours(10,0,0,0);var e=new Date(d.getTime()+1800000),z=function(n){return String(n).padStart(2,"0")},f=function(x){return x.getFullYear()+z(x.getMonth()+1)+z(x.getDate())+"T"+z(x.getHours())+z(x.getMinutes())+"00"};
- return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Buy a coffee (₹"+a+")")+"&details="+encodeURIComponent("Pay ₹"+a+" to "+UPI+" in any UPI app (GPay, PhonePe, Paytm).")+"&dates="+f(d)+"/"+f(e)+"&recur="+encodeURIComponent("RRULE:FREQ=WEEKLY")+"&ctz=Asia/Kolkata"}
+ return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Buy me a coffee (₹"+a+")")+"&details="+encodeURIComponent("Pay ₹"+a+" to "+UPI+" in any UPI app (GPay, PhonePe, Paytm).")+"&dates="+f(d)+"/"+f(e)+"&recur="+encodeURIComponent("RRULE:FREQ=WEEKLY")+"&ctz=Asia/Kolkata"}
 $("#go").addEventListener("click",function(){
  var a=qty*P;cur={n:$("#name").value.trim(),q:qty,mo:$("#rem").checked};
  $("#mt").textContent="Pay ₹"+a;var m=$("#msg").value.trim(),note=("x"+qty+" coffee"+(qty>1?"s":"")+(m?": "+m:"")).replace(/\s+/g," ").slice(0,50),L=links(a,note);$("#note").textContent="Note: "+note;$("#aG").href=L.g;$("#aP").href=L.p;$("#aT").href=L.t;$("#aU").href=L.u;
