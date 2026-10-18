@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ansaf – Buy Ansaf a coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#BD59F7;--purple-d:#A63FE3;--lp-bg:#FCF8FF;--lp-bd:#E8CCFF;--input:#F0F0F0;--surface:#FFFFFF;--bg:#FFFFFF;--alt:#FCF8FF;--text:#292929;--sub:#747B8C;--ibd:#E6E6E6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171A;--alt:#1E1A22;--surface:#222126;--lp-bg:#2A2130;--lp-bd:#4A3560;--input:#2E2D33;--text:#F2F2F4;--sub:#A3A8B5;--ibd:#3A3940}}
+:root[data-theme="dark"]{--bg:#17171A;--alt:#1E1A22;--surface:#222126;--lp-bg:#2A2130;--lp-bd:#4A3560;--input:#2E2D33;--text:#F2F2F4;--sub:#A3A8B5;--ibd:#3A3940}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--ibd)}
+nav .w{display:flex;align-items:center;height:60px;gap:22px}
+.logo{font-weight:700;font-size:20px;display:flex;align-items:center;gap:8px}.logo span{color:var(--purple)}
+nav .links{display:flex;gap:20px;margin-left:auto;font-size:14px;font-weight:500;color:var(--sub)}
+nav .links a:hover{color:var(--purple)}
+.btn{display:inline-block;border:0;border-radius:26px;background:var(--purple);color:#fff;font:700 15px Inter,sans-serif;padding:0 22px;height:42px;line-height:42px;cursor:pointer}
+.btn:hover{background:var(--purple-d)}.btn.o{background:none;color:var(--purple);border:1px solid var(--lp-bd);font-weight:600}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+section{padding:64px 0}.alt{background:var(--alt)}
+h2{font-size:28px;font-weight:700;margin:0 0 8px}.lead{color:var(--sub);margin:0 0 32px;max-width:560px}
+.hero .w{display:grid;grid-template-columns:1fr 460px;gap:48px;align-items:center}
+.pill{display:inline-block;background:var(--lp-bg);border:1px solid var(--lp-bd);color:var(--purple);font-size:13px;font-weight:600;padding:4px 12px;border-radius:20px}
+h1.big{font-size:44px;line-height:1.1;margin:16px 0;font-weight:700}h1.big span{color:var(--purple)}
+.stats{display:flex;gap:28px;margin-top:28px}.stats b{display:block;font-size:24px}.stats small{color:var(--sub)}
+.goal{margin-top:28px;background:var(--lp-bg);border:1px solid var(--lp-bd);border-radius:13px;padding:16px}
+.goal div.r{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+.bar{height:10px;background:var(--surface);border:1px solid var(--lp-bd);border-radius:6px;margin:10px 0 6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--purple);width:0;transition:width .6s}
+.goal small{color:var(--sub)}
+.card{background:var(--surface);border:1px solid var(--ibd);border-radius:4px;padding:27px;width:100%;max-width:460px}
+.card h3{font-size:24px;margin:0 0 20px;font-weight:700;display:flex;gap:8px;align-items:center}
+.help{position:relative;display:inline-flex;flex:none}
+.help button{width:14px;height:14px;padding:0;border:1.5px solid var(--sub);border-radius:50%;background:none;color:var(--sub);font:700 9px/1 Inter,sans-serif;cursor:pointer;display:grid;place-items:center}
+.help.sm button{width:16px;height:16px}
+.tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:200px;background:#292929;color:#fff;font:400 12px/1.4 Inter,sans-serif;padding:8px 10px;border-radius:8px;display:none;z-index:5;font-weight:400}
+.help:hover .tip,.help.open .tip{display:block}
+.picker{height:82px;background:var(--lp-bg);border:1px solid var(--lp-bd);border-radius:13px;padding:0 14px;display:flex;align-items:center;gap:10px}
+.cup{font-size:34px;line-height:1}.x{color:var(--sub);font-size:14px}
+.amts{display:flex;gap:8px}
+.amt{width:48px;height:48px;border-radius:50%;border:1px solid var(--lp-bd);background:#fff;color:var(--purple);font:600 16px Inter,sans-serif;cursor:pointer}
+.amt[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+#custom{width:48px;height:48px;border:1px solid var(--ibd);border-radius:12px;background:#fff;color:#292929;text-align:center;font:500 16px Inter,sans-serif;padding:0;margin-left:auto;-moz-appearance:textfield}
+#custom::-webkit-outer-spin-button,#custom::-webkit-inner-spin-button{-webkit-appearance:none}
+.f{width:100%;background:var(--input);border:0;border-radius:13px;padding:14px;font:400 15px Inter,sans-serif;color:var(--text);margin-top:16px;display:block}
+input.f{height:52px}textarea.f{height:124px;resize:none}
+::placeholder{color:var(--sub);opacity:1}
+.wrap{position:relative}
+.media{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--ibd);box-shadow:0 1px 3px rgba(0,0,0,.12);display:grid;place-items:center;cursor:pointer;color:#292929;padding:0}
+.file{position:absolute;right:52px;bottom:18px;font-size:12px;color:var(--sub);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chk{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13.5px}
+.chk input{appearance:none;width:20px;height:20px;border:1px solid #C9CCD3;border-radius:6px;background:#fff;margin:0;cursor:pointer;display:grid;place-items:center}
+.chk input:checked{background:var(--purple);border-color:var(--purple)}
+.chk input:checked::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.go{width:100%;height:49px;margin-top:20px;border:0;border-radius:26px;background:var(--purple);color:#fff;font:700 16px Inter,sans-serif;cursor:pointer}
+.go:hover{background:var(--purple-d)}.go:disabled{opacity:.45;cursor:not-allowed}
+.err{color:#D0453A;font-size:12px;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.tile{background:var(--surface);border:1px solid var(--lp-bd);border-radius:13px;padding:20px}
+.tile .e{font-size:30px}.tile h4{margin:8px 0 4px;font-size:17px}.tile p{margin:0;color:var(--sub);font-size:14px}
+.tile .pr{color:var(--purple);font-weight:700;font-size:20px}
+.tier.hot{border:2px solid var(--purple);background:var(--lp-bg)}
+.tier ul{padding-left:18px;margin:10px 0 16px;color:var(--sub);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.wall{display:flex;flex-direction:column;gap:12px;max-height:420px;overflow:auto;padding-right:4px}
+.sup{display:flex;gap:12px;background:var(--surface);border:1px solid var(--lp-bd);border-radius:13px;padding:14px}
+.av{flex:none;width:40px;height:40px;border-radius:50%;background:var(--purple);color:#fff;font-weight:700;display:grid;place-items:center}
+.sup b{font-size:14px}.sup b em{font-style:normal;color:var(--purple)}.sup p{margin:2px 0 0;font-size:14px;color:var(--sub)}
+.lb{background:var(--surface);border:1px solid var(--lp-bd);border-radius:13px;padding:8px 16px}
+.lb div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--ibd);font-size:14px}.lb div:last-child{border:0}
+.lb span{color:var(--purple);font-weight:600}
+details{background:var(--surface);border:1px solid var(--lp-bd);border-radius:13px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}details p{color:var(--sub);margin:8px 0 0;font-size:14px}
+.share{display:flex;gap:8px;background:var(--lp-bg);border:1px solid var(--lp-bd);border-radius:13px;padding:10px;max-width:420px;margin-top:20px}
+.share code{flex:1;align-self:center;font-size:14px;padding-left:6px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+footer{border-top:1px solid var(--ibd);padding:28px 0;color:var(--sub);font-size:14px}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px;z-index:30}
+.modal.show{display:flex}
+.box{background:var(--surface);border-radius:16px;padding:28px;width:380px;max-width:100%;text-align:center}
+.box h3{margin:8px 0}.box p{color:var(--sub);font-size:14px;margin:0 0 18px}
+@media (max-width:900px){.hero .w,.two{grid-template-columns:1fr}.hero .card{margin:0 auto}nav .links{display:none}nav .btn{margin-left:auto}h1.big{font-size:34px}}
+@media (max-width:420px){.card{padding:20px}.picker{padding:0 10px;gap:6px}.cup{font-size:28px}.amts{gap:5px}.amt,#custom{width:40px;height:40px;font-size:15px}.stats{gap:18px}}
+</style>
+</head>
+<body>
+<nav><div class="w"><a href="#top" class="logo">☕ Ansaf<span>.</span></a>
+<div class="links"><a href="#menu">Coffee menu</a><a href="#tiers">Monthly</a><a href="#wall">Supporters</a><a href="#faq">FAQ</a></div>
+<a href="#support" class="btn">Support</a></div></nav>
+
+<header class="hero" id="top"><section><div class="w">
+<div>
+<span class="pill">Independent creator</span>
+<h1 class="big">Fuel Ansaf’s next idea with a <span>coffee</span>.</h1>
+<p class="lead">Every coffee helps Ansaf keep making, sharing and learning in public. No ads, no paywalls, just friendly support.</p>
+<div class="stats"><div><b id="sCount">0</b><small>coffees bought</small></div><div><b id="sSup">0</b><small>supporters</small></div><div><b id="sMon">0</b><small>monthly patrons</small></div></div>
+<div class="goal"><div class="r"><span>🎯 Goal: New studio microphone</span><span id="gTxt"></span></div><div class="bar"><i id="gBar"></i></div><small id="gSub"></small></div>
+<div class="share"><code id="link">ansaf.page/coffee</code><button type="button" class="btn o" id="copy" style="height:36px;line-height:34px">Copy link</button></div>
+</div>
+
+<div class="card" id="support">
+<h3>Buy Ansaf a coffee <span class="help"><button type="button" aria-label="About supporting">?</button><span class="tip" role="tooltip">Each coffee is ₹50. Pay by UPI in a real setup.</span></span></h3>
+<div class="picker" role="group" aria-label="Number of coffees"><span class="cup" aria-hidden="true">☕</span><span class="x" aria-hidden="true">×</span>
+<div class="amts"><button type="button" class="amt" data-n="1" aria-pressed="false">1</button><button type="button" class="amt" data-n="3" aria-pressed="false">3</button><button type="button" class="amt" data-n="5" aria-pressed="false">5</button><button type="button" class="amt" data-n="10" aria-pressed="true">10</button></div>
+<input id="custom" type="number" min="1" max="1000" value="10" aria-label="Custom number of coffees"></div>
+<input class="f" id="name" type="text" placeholder="Name or @yoursocial" aria-label="Name or social handle" autocomplete="off">
+<div class="wrap"><textarea class="f" id="msg" placeholder="Say something nice..." aria-label="Support message"></textarea><span class="file" id="fname"></span>
+<button type="button" class="media" id="mediaBtn" aria-label="Attach media"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></button>
+<input type="file" id="file" accept="video/*,image/*" hidden></div>
+<div class="chk"><input type="checkbox" id="priv"><label for="priv">Make this message private</label><span class="help sm"><button type="button" aria-label="About private">?</button><span class="tip" role="tooltip">Your message stays hidden from the public wall.</span></span></div>
+<div class="chk"><input type="checkbox" id="mon"><label for="mon">Make this monthly</label><span class="help sm"><button type="button" aria-label="About monthly">?</button><span class="tip" role="tooltip">Repeats every month. Cancel anytime.</span></span></div>
+<button type="button" class="go" id="go">Support ₹500</button><div class="err" id="err" role="alert"></div>
+</div>
+</div></section></header>
+
+<section class="alt" id="menu"><div class="w"><h2>The coffee menu</h2><p class="lead">See what your support turns into. Tap a drink to load it into the form.</p>
+<div class="grid" id="menuGrid"></div></div></section>
+
+<section id="tiers"><div class="w"><h2>Become a monthly patron</h2><p class="lead">Steady support lets Ansaf plan ahead. Pick a tier and tick “Make this monthly”.</p>
+<div class="grid">
+<div class="tile tier"><div class="e">🫖</div><h4>Chai Friend</h4><div class="pr">₹150 / month</div><ul><li>Name on the supporter wall</li><li>Monthly thank-you note</li></ul><button class="btn o" data-tier="3">Choose</button></div>
+<div class="tile tier hot"><div class="e">☕</div><h4>Regular</h4><div class="pr">₹250 / month</div><ul><li>Everything in Chai Friend</li><li>Early access to new work</li><li>Vote on the next goal</li></ul><button class="btn" data-tier="5">Choose</button></div>
+<div class="tile tier"><div class="e">🏆</div><h4>Patron</h4><div class="pr">₹500 / month</div><ul><li>Everything in Regular</li><li>Shout-out in each release</li><li>Monthly Q&amp;A invite</li></ul><button class="btn o" data-tier="10">Choose</button></div>
+</div></div></section>
+
+<section class="alt" id="wall"><div class="w two">
+<div><h2>Supporter wall</h2><p class="lead">Fresh messages appear here the moment someone supports. Private ones stay anonymous.</p><div class="wall" id="wallList" aria-live="polite"></div></div>
+<div><h2>Top supporters</h2><p class="lead">The most generous coffee lovers this month.</p><div class="lb" id="lb"></div></div>
+</div></section>
+
+<section id="faq"><div class="w"><h2>Questions</h2><p class="lead">Quick answers before you pour that coffee.</p>
+<details><summary>How much is one coffee?</summary><p>One coffee is ₹50. You can buy any whole number of coffees from 1 to 1000.</p></details>
+<details><summary>Is this a real payment?</summary><p>This site is a demo, so no money moves. A live version would connect UPI or a payment provider.</p></details>
+<details><summary>What does a private message do?</summary><p>It hides your note from the wall, though your support still counts toward totals as “Private supporter”.</p></details>
+<details><summary>Can I cancel a monthly gift?</summary><p>Yes, a monthly gift can be cancelled whenever you like.</p></details>
+</div></section>
+
+<footer><div class="w"><span>© 2026 Ansaf. Made with ☕ and gratitude.</span><span>Prices in Indian rupees (₹)</span></div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="box"><div style="font-size:40px">☕</div><h3 id="mt">Thank you!</h3><p id="mp"></p><button type="button" class="go" style="margin:0" id="close">Done</button></div></div>
+
+<script>
+(function(){
+var P=50,GOAL=25000,qty=10,$=function(s){return document.querySelector(s)};
+var S=[{n:"Aisha",q:3,m:"Love your work, keep going!"},{n:"@riyaz",q:5,m:"Your last project made my week."},{n:"Meera",q:1,m:"Small thank-you for the inspiration.",mo:1},{n:"Joel",q:10,m:"Cheers to the next big thing!"},{n:"@nadia",q:2,m:"Coffee is on me today."}];
+var raised=S.reduce(function(a,s){return a+s.q*P},0)+6200,extra=0;
+var M=[["🫖","Chai break",1,"A warm thank-you and a smile from Ansaf."],["☕","Filter coffee",3,"Your name on the supporter wall."],["🥐","Coffee + snack",5,"A personal thank-you note."],["🎁","Coffee party",10,"A shout-out in the next release."]];
+function fmt(n){return n.toLocaleString("en-IN")}
+$("#menuGrid").innerHTML=M.map(function(m){return '<button type="button" class="tile" data-n="'+m[2]+'" style="text-align:left;cursor:pointer;font-family:inherit;color:inherit"><div class="e">'+m[0]+'</div><h4>'+m[1]+'</h4><div class="pr">₹'+m[2]*P+'</div><p>'+m[3]+'</p></button>'}).join("");
+function setQty(n){qty=n;$("#custom").value=n;render()}
+function valid(n){return Number.isInteger(n)&&n>=1&&n<=1000}
+function render(){
+ document.querySelectorAll(".amt").forEach(function(b){b.setAttribute("aria-pressed",String(+b.dataset.n===qty))});
+ var ok=valid(qty);$("#go").disabled=!ok;$("#go").textContent=ok?"Support ₹"+fmt(qty*P):"Support";
+ $("#err").textContent=ok||$("#custom").value===""?"":"Enter a whole number from 1 to 1000.";
+}
+function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
+function wall(){
+ $("#wallList").innerHTML=S.map(function(s){var nm=s.p?"Private supporter":s.n;
+  return '<div class="sup"><div class="av">'+esc(nm[0]==="@"?nm[1]:nm[0]).toUpperCase()+'</div><div><b>'+esc(nm)+' <em>bought '+s.q+' coffee'+(s.q>1?"s":"")+(s.mo?" monthly":"")+'</em></b><p>'+(s.p?"Message hidden.":esc(s.m||"Thanks for everything!"))+'</p></div></div>'}).join("");
+ var t=S.slice().sort(function(a,b){return b.q-a.q}).slice(0,5);
+ $("#lb").innerHTML=t.map(function(s,i){return '<div><span>'+(i+1)+'. '+esc(s.p?"Private supporter":s.n)+'</span><b>₹'+fmt(s.q*P)+'</b></div>'}).join("");
+ var c=S.reduce(function(a,s){return a+s.q},0)+124;
+ $("#sCount").textContent=c;$("#sSup").textContent=S.length+38;$("#sMon").textContent=S.filter(function(s){return s.mo}).length+11;
+ var pc=Math.min(100,Math.round(raised/GOAL*100));
+ $("#gTxt").textContent="₹"+fmt(raised)+" / ₹"+fmt(GOAL);$("#gBar").style.width=pc+"%";$("#gSub").textContent=pc+"% funded";
+}
+document.querySelectorAll(".amt").forEach(function(b){b.addEventListener("click",function(){setQty(+b.dataset.n)})});
+$("#custom").addEventListener("input",function(e){qty=e.target.value===""?NaN:Number(e.target.value);render()});
+function jump(n,mo){setQty(n);if(mo)$("#mon").checked=true;$("#support").scrollIntoView({behavior:"smooth",block:"center"})}
+document.querySelectorAll("#menuGrid .tile").forEach(function(b){b.addEventListener("click",function(){jump(+b.dataset.n)})});
+document.querySelectorAll("[data-tier]").forEach(function(b){b.addEventListener("click",function(){jump(+b.dataset.tier,1)})});
+document.querySelectorAll(".help button").forEach(function(b){b.addEventListener("click",function(e){e.stopPropagation();var p=b.parentNode,o=p.classList.contains("open");document.querySelectorAll(".help.open").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")})});
+document.addEventListener("click",function(){document.querySelectorAll(".help.open").forEach(function(x){x.classList.remove("open")})});
+$("#mediaBtn").addEventListener("click",function(){$("#file").click()});
+$("#file").addEventListener("change",function(e){var f=e.target.files[0];$("#fname").textContent=f?f.name:""});
+$("#copy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText("https://"+$("#link").textContent)}catch(e){}b.textContent="Copied!";setTimeout(function(){b.textContent="Copy link"},1500)});
+$("#go").addEventListener("click",function(){
+ if(!valid(qty)){render();return}
+ var n=$("#name").value.trim()||"Anonymous",s={n:n,q:qty,m:$("#msg").value.trim(),p:$("#priv").checked,mo:$("#mon").checked};
+ S.unshift(s);raised+=qty*P;wall();
+ $("#mp").textContent=n+", your "+(s.mo?"monthly ":"")+"support of ₹"+fmt(qty*P)+" was recorded on the wall. This is a demo, so no payment was made.";
+ $("#modal").classList.add("show");$("#close").focus();
+});
+function close(){$("#modal").classList.remove("show")}
+$("#close").addEventListener("click",close);document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+wall();render();
+})();
+</script>
+</body>
+</html>
