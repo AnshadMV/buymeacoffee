@@ -1,0 +1,7 @@
+# Dependencies and caches
+.firebase/
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store

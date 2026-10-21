@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Buy me a coffee</title>
+  <title>Buy Me a Coffee – Support Mohammed Ansaf</title>
+
+  <meta name="description"
+    content="Buy Mohammed Ansaf a coffee! Support his work with a simple ₹20 contribution using Google Pay, PhonePe, Paytm, or any UPI app.">
+
+  <meta name="application-name" content="Buy Me a Coffee">
+  <meta name="theme-color" content="#BD59F7">
+
+  <!-- Browser favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23BD59F7'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+
+  <!-- Link preview: WhatsApp, Facebook, LinkedIn, etc. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Buy Me a Coffee – Support Mohammed Ansaf">
+  <meta property="og:description"
+    content="Show your support with a coffee! Each coffee is just ₹20. Pay easily using your favourite UPI app.">
+  <meta property="og:url" content="https://4nsafp.web.app/">
+  <meta property="og:site_name" content="Buy Me a Coffee">
+
+  <!-- Twitter / X link preview -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Buy Me a Coffee – Support Mohammed Ansaf">
+  <meta name="twitter:description" content="Support Mohammed Ansaf with a ₹20 coffee using your favourite UPI app.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #BD59F7;
+      --purple-d: #A63FE3;
+      --lp-bg: #FCF8FF;
+      --lp-bd: #E8CCFF;
+      --input: #F0F0F0;
+      --surface: #FFFFFF;
+      --bg: #FFFFFF;
+      --text: #292929;
+      --sub: #747B8C;
+      --ibd: #E6E6E6;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #000;
+      --surface: #121212;
+      --lp-bg: #161616;
+      --lp-bd: #333;
+      --input: #1E1E1E;
+      --text: #FFF;
+      --sub: #A8A8A8;
+      --ibd: #2A2A2A
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    [hidden] {
+      display: none !important
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, sans-serif;
+      line-height: 1.5
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 2px
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--ibd)
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 20px
+    }
+
+    .logo span {
+      color: var(--purple)
+    }
+
+    .tb {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--ibd);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      padding: 0
+    }
+
+    .tb:hover {
+      border-color: var(--purple)
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--ibd);
+      border-radius: 4px;
+      padding: 20px;
+      width: 100%;
+      max-width: 460px
+    }
+
+    .card h1 {
+      font-size: 24px;
+      margin: 0 0 20px;
+      font-weight: 700;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      line-height: 1.2
+    }
+
+    .help {
+      position: relative;
+      display: inline-flex;
+      flex: none
+    }
+
+    .help button {
+      width: 14px;
+      height: 14px;
+      padding: 0;
+      border: 1.5px solid var(--sub);
+      border-radius: 50%;
+      background: none;
+      color: var(--sub);
+      font: 700 9px/1 Inter, sans-serif;
+      cursor: pointer;
+      display: grid;
+      place-items: center
+    }
+
+    .help.sm button {
+      width: 16px;
+      height: 16px
+    }
+
+    .tip {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 8px);
+      transform: translateX(-50%);
+      width: 200px;
+      background: #292929;
+      color: #fff;
+      font: 400 12px/1.4 Inter, sans-serif;
+      padding: 8px 10px;
+      border-radius: 8px;
+      display: none;
+      z-index: 5
+    }
+
+    .help:hover .tip,
+    .help.open .tip {
+      display: block
+    }
+
+    .picker {
+      height: 82px;
+      background: var(--lp-bg);
+      border: 1px solid var(--lp-bd);
+      border-radius: 13px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .cup {
+      font-size: 24px;
+      line-height: 1
+    }
+
+    .x {
+      color: var(--sub);
+      font-size: 14px
+    }
+
+    .amts {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      gap: 5px;
+      justify-content: flex-end
+    }
+
+    .amt {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 48px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      border: 1px solid var(--lp-bd);
+      background: #fff;
+      color: var(--purple);
+      font: 600 14px Inter, sans-serif;
+      cursor: pointer;
+      padding: 0
+    }
+
+    .amt[aria-pressed="true"] {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff
+    }
+
+    .f {
+      width: 100%;
+      background: var(--input);
+      border: 0;
+      border-radius: 13px;
+      padding: 14px;
+      font: 400 15px Inter, sans-serif;
+      color: var(--text);
+      margin-top: 16px;
+      display: block
+    }
+
+    input.f {
+      height: 52px
+    }
+
+    textarea.f {
+      height: 124px;
+      resize: none
+    }
+
+    ::placeholder {
+      color: var(--sub);
+      opacity: 1
+    }
+
+    .wrap {
+      position: relative
+    }
+
+    .media {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--ibd);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: #292929;
+      padding: 0
+    }
+
+    .file {
+      position: absolute;
+      right: 52px;
+      bottom: 18px;
+      font-size: 12px;
+      color: var(--sub);
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .chk {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 13.5px
+    }
+
+    .chk input {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #C9CCD3;
+      border-radius: 6px;
+      background: #fff;
+      margin: 0;
+      cursor: pointer;
+      display: grid;
+      place-items: center
+    }
+
+    .chk input:checked {
+      background: var(--purple);
+      border-color: var(--purple)
+    }
+
+    .chk input:checked::after {
+      content: "";
+      width: 5px;
+      height: 10px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) translate(-1px, -1px)
+    }
+
+    .go {
+      width: 100%;
+      height: 49px;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 26px;
+      background: var(--purple);
+      color: #fff;
+      font: 700 16px Inter, sans-serif;
+      cursor: pointer
+    }
+
+    .go:hover {
+      background: var(--purple-d)
+    }
+
+    .go:active {
+      transform: scale(.99)
+    }
+
+    a.go {
+      display: block;
+      line-height: 49px;
+      text-align: center;
+      text-decoration: none
+    }
+
+    .go.alt {
+      background: none;
+      color: var(--purple);
+      border: 1px solid var(--lp-bd);
+      margin-top: 10px
+    }
+
+    .go.alt:hover {
+      background: var(--lp-bg)
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 30
+    }
+
+    .modal.show {
+      display: flex
+    }
+
+    .box {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 24px;
+      width: 380px;
+      max-width: 100%;
+      max-height: 92vh;
+      overflow: auto;
+      text-align: center
+    }
+
+    .box h2 {
+      margin: 6px 0
+    }
+
+    .box p {
+      color: var(--sub);
+      font-size: 14px;
+      margin: 0 0 12px
+    }
+
+    .qr {
+      width: 220px;
+      max-width: 100%;
+      height: auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 8px;
+      border: 1px solid var(--lp-bd);
+      display: block;
+      margin: 0 auto 10px
+    }
+
+    .pay b {
+      color: var(--text)
+    }
+
+    .mini {
+      background: none;
+      border: 1px solid var(--lp-bd);
+      color: var(--purple);
+      border-radius: 14px;
+      font: 600 12px Inter, sans-serif;
+      padding: 3px 10px;
+      cursor: pointer;
+      margin-left: 6px
+    }
+
+    .lnk {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--purple);
+      text-decoration: none
+    }
+
+    @media (min-width:480px) {
+      nav {
+        padding: 0 32px
+      }
+
+      .card {
+        padding: 27px
+      }
+
+      .picker {
+        padding: 0 14px;
+        gap: 10px
+      }
+
+      .cup {
+        font-size: 34px
+      }
+
+      .amts {
+        gap: 8px
+      }
+
+      .amt {
+        font-size: 16px
+      }
+    }
+
+    .go.app {
+      margin-top: 10px
+    }
+
+    .go.gp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      color: #3c4043;
+      border: 1px solid #dadce0;
+      margin-top: 12px;
+      font-weight: 600;
+      line-height: normal
+    }
+
+    .go.gp:hover {
+      background: #f4f4f4
+    }
+
+    .go.gp svg {
+      width: 22px;
+      height: 22px
+    }
+
+    .oth {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      line-height: normal
+    }
+
+    .bds {
+      display: inline-flex
+    }
+
+    .bds .bd+.bd {
+      margin-left: -8px
+    }
+
+    .bd {
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      font: 700 9px Inter, sans-serif;
+      color: #fff;
+      border: 2px solid var(--surface);
+      flex: none
+    }
+
+    #opanel {
+      margin-top: 8px;
+      display: grid;
+      gap: 8px
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid var(--lp-bd);
+      border-radius: 13px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      text-align: left
+    }
+
+    .row:hover {
+      background: var(--lp-bg)
+    }
+
+    .row .bd {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      border: 0;
+      font-size: 12px
+    }
+
+    /* Remove text selection highlight */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+    }
+
+    body {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* Keep form fields selectable and editable */
+    input,
+    textarea {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    /* Remove tap highlight from clickable elements */
+    button,
+    a,
+    .amt,
+    .go,
+    .tb,
+    .media {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Remove default button focus outline after tapping */
+    button:focus:not(:focus-visible),
+    a:focus:not(:focus-visible) {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <nav><span class="logo">☕ 4nsafp<span>.</span></span><button type="button" class="tb" id="theme"
+      aria-label="Switch to dark theme" title="Toggle black and white theme">☾</button></nav>
+  <main>
+    <section class="card" aria-labelledby="ttl">
+      <h1 id="ttl">Buy me a coffee <span class="help"><button type="button"
+            aria-label="About supporting">?</button><span class="tip" role="tooltip">Each coffee is ₹20. You pay by
+            UPI.</span></span></h1>
+      <div class="picker" role="group" aria-label="Number of coffees"><span class="cup" aria-hidden="true">☕</span><span
+          class="x" aria-hidden="true">×</span>
+        <div class="amts"><button type="button" class="amt" data-n="1" aria-pressed="false">1</button><button
+            type="button" class="amt" data-n="2" aria-pressed="false">2</button><button type="button" class="amt"
+            data-n="3" aria-pressed="false">3</button><button type="button" class="amt" data-n="4"
+            aria-pressed="false">4</button><button type="button" class="amt" data-n="5" aria-pressed="true">5</button>
+        </div>
+      </div>
+      <input class="f" id="name" type="text" placeholder="Name or @yoursocial" aria-label="Name or social handle"
+        autocomplete="off">
+      <div class="wrap"><textarea class="f" id="msg" placeholder="Say something nice..."
+          aria-label="Support message"></textarea><span class="file" id="fname"></span>
+        <button type="button" class="media" id="mediaBtn" aria-label="Attach media"><svg width="16" height="16"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="m22 8-6 4 6 4V8Z" />
+            <rect x="2" y="6" width="14" height="12" rx="2" />
+          </svg></button>
+        <input type="file" id="file" accept="video/*,image/*" hidden>
+      </div>
+      <div class="chk"><input type="checkbox" id="rem"><label for="rem">Remind me weekly to support</label><span
+          class="help sm"><button type="button" aria-label="About weekly reminder">?</button><span class="tip"
+            role="tooltip">Adds a weekly Google Calendar reminder so you can pay again in your UPI app.</span></span>
+      </div>
+      <button type="button" class="go" id="go">Support ₹100</button>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <div class="box">
+      <div id="s1">
+        <div style="font-size:34px">☕</div>
+        <h2 id="mt">Pay ₹100</h2>
+        <p class="pay">To <b>Mohammed Ansaf P</b><br><span>ansafm60@okicici</span></p>
+        <p class="pay" id="note"></p>
+        <a class="go gp" id="aG" href="#"><svg viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#EA4335"
+              d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+            <path fill="#4285F4"
+              d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+            <path fill="#FBBC05"
+              d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+            <path fill="#34A853"
+              d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+          </svg>Google Pay</a>
+        <button type="button" class="go alt oth" id="oth" aria-expanded="false" aria-controls="opanel"><span
+            class="bds"><span class="bd" style="background:#5F259F">पे</span><span class="bd"
+              style="background:#00BAF2">tm</span><span class="bd" style="background:#F37E20">UPI</span></span>Other UPI
+          apps ▾</button>
+        <div id="opanel" hidden>
+          <a class="row" id="aP" href="#"><span class="bd" style="background:#5F259F">पे</span>PhonePe</a>
+          <a class="row" id="aT" href="#"><span class="bd" style="background:#00BAF2">tm</span>Paytm</a>
+          <a class="row" id="aU" href="#"><span class="bd" style="background:#F37E20">UPI</span>BHIM / any UPI app</a>
+        </div>
+        <a class="lnk" id="calBtn" target="_blank" rel="noopener" href="#" hidden>🔔 Add weekly reminder to Google
+          Calendar</a>
+        <button type="button" class="mini" id="close" style="margin:14px 0 0">Cancel</button>
+      </div>
+      <div id="s2" hidden>
+        <div style="font-size:40px">🎉</div>
+        <h2>Thank you!</h2>
+        <p id="mp"></p><button type="button" class="go" style="margin:0" id="done">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cf" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60"
+    aria-hidden="true"></canvas>
+  <script>
+    (function () {
+      var P = 20, UPI = "ansafm60@okicici", PN = "Mohammed Ansaf P", qty = 5, cur = null, $ = function (s) { return document.querySelector(s) };
+      var amts = document.querySelectorAll(".amt");
+      function render() { amts.forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.n === qty)) }); $("#go").textContent = "Support ₹" + qty * P }
+      amts.forEach(function (b) { b.addEventListener("click", function () { qty = +b.dataset.n; render() }) });
+      document.querySelectorAll(".help button").forEach(function (b) { b.addEventListener("click", function (e) { e.stopPropagation(); var p = b.parentNode, o = p.classList.contains("open"); document.querySelectorAll(".help.open").forEach(function (x) { x.classList.remove("open") }); if (!o) p.classList.add("open") }) });
+      document.addEventListener("click", function () { document.querySelectorAll(".help.open").forEach(function (x) { x.classList.remove("open") }) });
+      $("#mediaBtn").addEventListener("click", function () { $("#file").click() });
+      $("#file").addEventListener("change", function (e) { var f = e.target.files[0]; $("#fname").textContent = f ? f.name : "" });
+      function qs(a, t) { return "pa=" + encodeURIComponent(UPI) + "&pn=" + encodeURIComponent(PN) + "&am=" + a.toFixed(2) + "&cu=INR&tn=" + encodeURIComponent(t) }
+      var IOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      function links(a, t) { var q = qs(a, t); return { g: (IOS ? "gpay://upi/pay?" : "tez://upi/pay?") + q, p: "phonepe://pay?" + q, t: "paytmmp://pay?" + q, u: "upi://pay?" + q } }
+      function calLink(a) {
+        var d = new Date(); d.setDate(d.getDate() + 7); d.setHours(10, 0, 0, 0); var e = new Date(d.getTime() + 1800000), z = function (n) { return String(n).padStart(2, "0") }, f = function (x) { return x.getFullYear() + z(x.getMonth() + 1) + z(x.getDate()) + "T" + z(x.getHours()) + z(x.getMinutes()) + "00" };
+        return "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Buy me a coffee (₹" + a + ")") + "&details=" + encodeURIComponent("Pay ₹" + a + " to " + UPI + " in any UPI app (GPay, PhonePe, Paytm).") + "&dates=" + f(d) + "/" + f(e) + "&recur=" + encodeURIComponent("RRULE:FREQ=WEEKLY") + "&ctz=Asia/Kolkata"
+      }
+      $("#go").addEventListener("click", function () {
+        var a = qty * P; cur = { n: $("#name").value.trim(), q: qty, mo: $("#rem").checked };
+        $("#mt").textContent = "Pay ₹" + a; var m = $("#msg").value.trim(), note = ("x" + qty + " coffee" + (qty > 1 ? "s" : "") + (m ? ": " + m : "")).replace(/\s+/g, " ").slice(0, 50), L = links(a, note); $("#note").textContent = "Note: " + note; $("#aG").href = L.g; $("#aP").href = L.p; $("#aT").href = L.t; $("#aU").href = L.u;
+        var c = $("#calBtn"); c.hidden = !cur.mo; if (cur.mo) c.href = calLink(a);
+        $("#s1").hidden = false; $("#s2").hidden = true; $("#modal").classList.add("show"); $("#aG").focus(); confetti(90);
+      });
+      var went = false;
+      ["aG", "aP", "aT", "aU"].forEach(function (id) { $("#" + id).addEventListener("click", function () { went = true }) });
+      $("#oth").addEventListener("click", function () { var p = $("#opanel"); p.hidden = !p.hidden; this.setAttribute("aria-expanded", String(!p.hidden)) });
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden && went && $("#modal").classList.contains("show")) {
+          went = false;
+          $("#mp").textContent = (cur.n || "Friend") + ", thank you for " + cur.q + " coffee" + (cur.q > 1 ? "s" : "") + " (₹" + cur.q * P + "). If your payment went through, it means a lot!" + (cur.mo ? " Your weekly reminder is set." : "");
+          $("#s1").hidden = true; $("#s2").hidden = false; $("#done").focus(); confetti(160)
+        }
+      });
+      function confetti(n) {
+        if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+        var c = $("#cf"), x = c.getContext("2d"), W = c.width = innerWidth, H = c.height = innerHeight, ps = [], cols = ["#BD59F7", "#A63FE3", "#E8CCFF", "#FFB84D", "#4CD4A0", "#292929"];
+        for (var i = 0; i < n; i++) {
+          var an = -Math.PI * (.15 + Math.random() * .7), sp = 9 + Math.random() * 11;
+          ps.push({ x: W / 2, y: H * .72, vx: Math.cos(an) * sp, vy: Math.sin(an) * sp, w: 6 + Math.random() * 6, h: 4 + Math.random() * 4, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[i % cols.length], t: i % 9 === 0 ? 2 : (i % 3 === 0 ? 1 : 0) })
+        }
+        var f = 0;
+        (function tick() {
+          x.clearRect(0, 0, W, H); var live = 0;
+          ps.forEach(function (p) {
+            p.vy += .34; p.vx *= .992; p.x += p.vx; p.y += p.vy; p.r += p.vr; if (p.y < H + 20) live++;
+            x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c;
+            if (p.t === 2) { x.font = "18px serif"; x.fillText("☕", -9, 6) } else if (p.t === 1) { x.beginPath(); x.arc(0, 0, p.h, 0, 7); x.fill() } else x.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            x.restore()
+          });
+          if (live && ++f < 260) requestAnimationFrame(tick); else x.clearRect(0, 0, W, H)
+        })();
+      }
+      function close() { went = false; $("#modal").classList.remove("show") }
+      $("#close").addEventListener("click", close); $("#done").addEventListener("click", close); document.addEventListener("keydown", function (e) { if (e.key === "Escape") close() });
+      var root = document.documentElement, tb = $("#theme");
+      function paint() { var d = root.getAttribute("data-theme") === "dark"; tb.textContent = d ? "☀" : "☾"; tb.setAttribute("aria-label", d ? "Switch to light theme" : "Switch to dark theme") }
+      try { var sv = localStorage.getItem("ansaf-theme2"); if (sv) root.setAttribute("data-theme", sv) } catch (e) { }
+      tb.addEventListener("click", function () { var n = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; root.setAttribute("data-theme", n); try { localStorage.setItem("ansaf-theme2", n) } catch (e) { } paint() });
+      paint(); render();
+    })();
+  </script>
+</body>
+
+</html>
